@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <style>
+        #container {
+            height: 100px;
+            width: 100px;
+            background-color: black;
+
+        }
+        #container2 {
+            height: 100px;
+            width: 100px;
+            background-color: steelblue;
+        }
+        #button {
+            height: 25px;
+            width: 200px;
+            background-color: darkseagreen;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div id="container2"></div>
+<button id="button">Click Me!</button>
+<script>
+    d3.select("#container")
+      .transition()
+      .duration(3000)
+      .style("background-color", "red");
+    
+    d3.select("#container2")
+     .transition()
+      .duration(3000)
+      .style("background-color", "red");
+    
+    d3.select("#button")
+     
+</script>
+</body>
+</html>

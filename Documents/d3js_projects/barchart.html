@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>D3 Tutorial</title>
+       <script src="https://d3js.org/d3.v3.js"></script>
+   </head>
+   <body>  
+    <script type="text/javascript">
+            
+    var data_values = [5,10,30,50,60,12,24,40];
+    
+    /* pasting data values     
+    var p = d3.selectAll("p") .data(data_values).enter().append("p").text(function(value){ return value; });
+    p.style({"font-size":"20px", "font-family":"arial"});
+     */   
+    var svg = d3.select("body").append("svg").attr({"width":450, "height":400});  
+    
+/*        var bars = svg.append("rect").attr({"x":"30px", "y":"30px", "width":"30px", "height":"150px"}); 
+        bars.attr("fill", "blue");
+        */
+    
+        var bars = svg.selectAll("rect").data(data_values).enter().append("rect").attr("width", "25px").attr("height", function(d){return d;});
+        bars.attr("x", function(d,i) { return i*30;}) /*multiply d by 5 in height function to rescale */
+        bars.attr("y", function(d) {return 400-d*5;}) /*flip bars upside down by subtracting height of bars from height of total svg */
+        .attr("height", function(d) {return d*5;})
+        bars.attr("fill", "steelblue"); /*change colour of bars */
+        
+        /*find max and min values */
+        var max = d3.max(data_values); 
+        var min = d3.min(data_values);
+        
+        /* filter for bars that match our filter */
+        bars.filter(function(d) {return d==max;}).attr("fill", "green");
+        bars.filter(function(d) {return d==min;}).attr("fill", "orange");
+       </script>
+    </body>
+</html>
